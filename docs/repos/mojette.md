@@ -23,10 +23,11 @@ output, no SIGILL/SIGBUS, on every box:
 | ppc64le | POWER8E (VSX `VXOR`)          | 513 MB/s | 7.7 GB/s  | 15.1x   |
 | s390x   | IBM z15 (vector `VX`)         | 1.58 GB/s| 15.0 GB/s | 9.5x    |
 | riscv64 | SpacemiT X60, RVV1.0 VLEN=256 | 253 MB/s | 1.35 GB/s | 5.3x    |
+| loong64 | Loongson 3C5000L (LSX)        | 648 MB/s | 6.96 GB/s | 10.8x   |
 
-amd64 (AVX2/SSE2) is verified native on CI; loong64 (LSX) is emitted and QEMU-checked,
-with real-hardware validation pending. The scalar loop stays the correctness oracle: a
-differential fuzzer checks every kernel byte-for-byte against it on every CI run.
+amd64 (AVX2/SSE2) is verified native on CI; all five non-amd64 kernels are validated on
+real hardware (no QEMU): correct + measured above. The scalar loop stays the correctness
+oracle: a differential fuzzer checks every kernel byte-for-byte against it on every CI run.
 
 ## Install
 
