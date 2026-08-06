@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -579,11 +579,18 @@ output, no SIGILL/SIGBUS, on every box:</p>
 <td>1.35 GB/s</td>
 <td>5.3x</td>
 </tr>
+<tr>
+<td>loong64</td>
+<td>Loongson 3C5000L (LSX)</td>
+<td>648 MB/s</td>
+<td>6.96 GB/s</td>
+<td>10.8x</td>
+</tr>
 </tbody>
 </table>
-<p>amd64 (AVX2/SSE2) is verified native on CI; loong64 (LSX) is emitted and QEMU-checked,
-with real-hardware validation pending. The scalar loop stays the correctness oracle: a
-differential fuzzer checks every kernel byte-for-byte against it on every CI run.</p>
+<p>amd64 (AVX2/SSE2) is verified native on CI; all five non-amd64 kernels are validated on
+real hardware (no QEMU): correct + measured above. The scalar loop stays the correctness
+oracle: a differential fuzzer checks every kernel byte-for-byte against it on every CI run.</p>
 <h2 id="install">Install</h2>
 <div class="highlight"><pre><span></span><code>go<span class="w"> </span>get<span class="w"> </span>github.com/go-erasure/mojette
 </code></pre></div>
@@ -651,7 +658,7 @@ differential fuzzer checks every kernel byte-for-byte against it on every CI run
       <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.top", "content.code.copy", "search.suggest"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   </body>
