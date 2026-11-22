@@ -1,14 +1,14 @@
 # reedsolomon
 
-Reed-Solomon MDS erasure code over GF(2¹⁶) — PAR2-compatible field, SPLIT(16,4) SIMD.
+Reed-Solomon MDS erasure code over GF(2¹⁶) and the real PAR 2.0 code, SPLIT(16,4) SIMD.
 
-A systematic MDS code: a Cauchy generator matrix guarantees any `dataShards` of the `dataShards + parityShards` shards reconstruct the original data. It doubles as the arithmetic core for [PAR2](https://en.wikipedia.org/wiki/Parchive).
+Two codes over the same field, as two types so they cannot be mixed. `Encoder` is a systematic MDS code: a Cauchy generator matrix guarantees any `dataShards` of the `dataShards + parityShards` shards reconstruct the original data (its parity is not PAR2 recovery data). `PAR2` is the [PAR 2.0](https://en.wikipedia.org/wiki/Parchive) code: it produces and consumes real PAR2 recovery slices, byte-identical to par2cmdline 2.0.0 in both directions.
 
 ## Highlights
 
 - **CGO_ENABLED=0**; the only dependency is `golang.org/x/sys` (CPU feature detection).
 - **MDS** systematic code via a Cauchy generator matrix.
-- **PAR2-compatible field**: GF(2¹⁶), primitive polynomial `0x1100B`, generator `2`.
+- **PAR 2.0 code** (`PAR2`, v0.6.0): the specification's matrix over little-endian words in GF(2¹⁶) (primitive polynomial `0x1100B`, generator `2`), checked against par2cmdline output, at least as fast as `Encoder` on s390x, ppc64le, amd64 and arm64.
 - **SIMD region multiply** (GF-Complete SPLIT(16,4)): a byte-permute fast path on **all six** 64-bit targets — amd64 (SSSE3 `PSHUFB`), arm64 (NEON `TBL`), s390x (z13 `VPERM`), ppc64le (POWER8 VSX `VPERM`), riscv64 (RVV `vrgather.vv`) and loong64 (LSX `vshuf.b`) — each proven bit-identical to the scalar loop by a differential oracle.
 - **100% test coverage**, verified across nine GOOS/GOARCH targets.
 
@@ -34,6 +34,11 @@ enc, _ := reedsolomon.New(4, 2)
 // Shards are byte slices read as big-endian uint16 words, same even length.
 enc.Encode(shards)                 // writes parity shards
 enc.Reconstruct(shards, present)   // rebuilds missing shards
+
+// PAR 2.0 recovery data (little-endian words, exponents as in the .par2 file):
+p, _ := reedsolomon.NewPAR2(len(data))
+p.Encode(data, exponents, recovery)                // same bytes as par2cmdline
+p.Reconstruct(data, present, exponents, recovery)  // rebuilds lost input slices
 ```
 
 ## Install
