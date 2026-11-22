@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="assets/logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.2">
     
     
       
@@ -29,10 +29,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -462,10 +462,10 @@
 
 <h1 id="go-erasure">go-erasure</h1>
 <p>Pure-Go erasure coding — Reed-Solomon over GF(2^16) and the RozoFS Mojette transform, with go-asmgen SIMD.</p>
-<p><code>go-erasure</code> provides two independent, dependency-free erasure-coding libraries in pure Go: a Reed-Solomon MDS codec over GF(2¹⁶) (the PAR2-compatible field) and the XOR-only Mojette discrete-Radon transform used by <a href="https://rozofs.github.io/rozofs/master/">RozoFS</a>. The region hot loops dispatch to <a href="https://github.com/go-asmgen/asmgen">go-asmgen</a> SIMD kernels, validated byte-for-byte against a scalar oracle on real hardware.</p>
+<p><code>go-erasure</code> provides two independent, dependency-free erasure-coding libraries in pure Go: a Reed-Solomon MDS codec over GF(2¹⁶) (with the real PAR 2.0 code, checked against par2cmdline) and the XOR-only Mojette discrete-Radon transform used by <a href="https://rozofs.github.io/rozofs/master/">RozoFS</a>. The region hot loops dispatch to <a href="https://github.com/go-asmgen/asmgen">go-asmgen</a> SIMD kernels, validated byte-for-byte against a scalar oracle on real hardware.</p>
 <h2 id="repositories">Repositories</h2>
 <div class="repo-grid">
-<p><a class="repo-card" href="repos/reedsolomon.md"><code>reedsolomon</code><br><small>Reed-Solomon MDS erasure code over GF(2¹⁶) — PAR2-compatible field, SPLIT(16,4) SIMD.</small></a>
+<p><a class="repo-card" href="repos/reedsolomon.md"><code>reedsolomon</code><br><small>Reed-Solomon MDS erasure code over GF(2¹⁶) and the real PAR 2.0 code, SPLIT(16,4) SIMD.</small></a>
 <a class="repo-card" href="repos/mojette.md"><code>mojette</code><br><small>Mojette transform (discrete Radon, XOR-only) — the RozoFS erasure code, SIMD on all six 64-bit targets.</small></a></p>
 </div>
 
@@ -523,10 +523,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.top", "content.code.copy", "search.suggest"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.sections", "navigation.top", "content.code.copy", "search.suggest"], "search": "assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
     
     
-      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="assets/javascripts/bundle.a5f9d56c.min.js"></script>
       
     
   </body>
